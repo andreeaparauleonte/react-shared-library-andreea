@@ -1,0 +1,27 @@
+input{
+    height:20px;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.input-success{
+    background-color: #E8F6EE;
+    border-color: #27AE60;
+}
+.input-warning{
+    background-color: #FFFAEB;
+    border-color: #FFD942;
+}
+.input-invalid{
+    background-color: #FCECEA;
+    border-color: #E74C3C;
+}
+.clearIcon{
+    position: absolute;
+    right:10px;
+    width:20px;
+    height:20px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor:pointer;
+}
