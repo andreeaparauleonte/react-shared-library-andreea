@@ -10,6 +10,7 @@ class Textarea extends Component{
     constructor(props){
         super(props);
         this.onChangeEvent=this.onChangeEvent.bind(this);
+        this.getCounterValue=this.getCounterValue.bind(this);
     }
 
     componentDidMount = () => {
@@ -37,32 +38,36 @@ class Textarea extends Component{
           });
     }
 
+    getCounterValue = () =>{
+        let max = 1000;
+        if(this.props.maxlength !== undefined){
+            max = this.props.maxlength;
+        }
+
+        return max - this.state.value.length;
+    }
+
     render(){
-        let input;
-        const inputProps = Object.assign({}, this.props);
-        delete inputProps.hasClearIcon;
-        delete inputProps.inputValueChanged;
+        
+        const textareaProps = Object.assign({}, this.props);
+        
+        delete textareaProps.inputValueChanged;
 
         let clearIcon=null;
-        if(this.props.hasClearIcon !== undefined && this.state.value!==""){
+        if(this.state.value!==""){
             clearIcon = (<i className="clearIcon" onClick={this.clearInputValue}>&times;</i>);
         }
 
-        let divClassname="centric-mat-input";
-        let evalIcon = null;
-
+        let divClassname="centric-mat-textarea";
         if(this.props.className !== undefined){
-            divClassname = divClassname + " " + this.props.className; 
-            let arrClassName = this.props.className.split(" ");
-            if(arrClassName.indexOf("input-success") > -1 || arrClassName.indexOf("input-warning") > -1 || arrClassName.indexOf("input-invalid") > -1){
-                evalIcon= (<span className="evalIcon"></span>);
-            }
+            divClassname = divClassname + " " + this.props.className;           
         }
         
         return (<div className={divClassname}>
-            <textarea  {...inputProps}></textarea>
+            <textarea  {...textareaProps} onChange={this.onChangeEvent} value={this.state.value}></textarea>
+            <span className="textarea-counter">{this.getCounterValue()}</span>
             {clearIcon}
-            {evalIcon}
+            
             </div>);
     }
 }
