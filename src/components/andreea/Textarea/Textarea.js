@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
-import InputMask from 'react-input-mask';
-import './Input.css';
-class Input extends Component{
+import './Textarea.css';
+
+class Textarea extends Component{
     state = {
         value: '',
         initValue: false
@@ -43,13 +43,6 @@ class Input extends Component{
         delete inputProps.hasClearIcon;
         delete inputProps.inputValueChanged;
 
-        if(this.props.mask !== undefined){
-            input = (<InputMask {...inputProps} value={this.state.initValue? this.props.value : this.state.value} onChange={this.onChangeEvent} />);
-        }
-        else{
-            input=<input {...inputProps} value={this.state.initValue? this.props.value : this.state.value} onChange={this.onChangeEvent}/>;
-        }
-
         let clearIcon=null;
         if(this.props.hasClearIcon !== undefined && this.state.value!==""){
             clearIcon = (<i className="clearIcon" onClick={this.clearInputValue}>&times;</i>);
@@ -67,10 +60,10 @@ class Input extends Component{
         }
         
         return (<div className={divClassname}>
-            {input}
+            <textarea  {...inputProps}></textarea>
             {clearIcon}
             {evalIcon}
             </div>);
     }
 }
-export default Input;
+export default Textarea;
