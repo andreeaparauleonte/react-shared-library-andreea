@@ -5,6 +5,9 @@ import './App.css';
 function App() {
   return (
     <div className="App">
+    <style>
+          @import url('https://fonts.googleapis.com/css?family=Open+Sans|Poppins');
+        </style>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
