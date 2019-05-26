@@ -9,6 +9,7 @@ storiesOf('Input', module)
 .addParameters({
   info: {
     // Make a default for all stories in this book,
+    header:false,
     inline: true, // where the components are inlined
     styles: {
       header: false
