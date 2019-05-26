@@ -20,4 +20,7 @@ storiesOf('Textarea', module)
     .add('textarea maxlength', ()=>(<div className="container">
         <p>Simple Centric textarea with maximum length 20</p>
         <Textarea maxlength="20" /></div>))
+    .add('textarea disabled', ()=>(<div className="container">
+    <p>Simple Centric textarea disabled</p>
+    <Textarea disabled /></div>))
      
